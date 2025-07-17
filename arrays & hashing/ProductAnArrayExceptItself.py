@@ -20,27 +20,50 @@ class Solution:
             output: [30, 15, 10, 6]
         """
 
+
+
+        # OPTIMAL suffix prefix approach
         n = len(nums)
-        prefix = []
-        suffix = [1] * n
-        result = [0] * n
+        ans = [1] * n
+        i = 0
+        j = n - 1
+        product_i = 1
+        product_j = 1
 
-        product_one = 1
-        for i in nums:
-            prefix.append(product_one)
-            product_one *= i
+        while i < n and j >= 0:
+            ans[i] *= product_i
+            ans[j] *= product_j
 
-        product_two = 1
-        for i in range(n - 1, -1, -1):
-            suffix[i] = product_two
-            product_two *=  nums[i]
+            product_i *= nums[i]
+            product_j *= nums[j]
 
-        print(prefix)
-        print(suffix)
 
-        for i in range(n):
-            result[i] = prefix[i] * suffix[i] 
+            i += 1
+            j -= 1
 
-        return result
+        return ans
+
+        # n = len(nums)
+        # prefix = []
+        # suffix = [1] * n
+        # result = [0] * n
+
+        # product_one = 1
+        # for i in nums:
+        #     prefix.append(product_one)
+        #     product_one *= i
+
+        # product_two = 1
+        # for i in range(n - 1, -1, -1):
+        #     suffix[i] = product_two
+        #     product_two *=  nums[i]
+
+        # print(prefix)
+        # print(suffix)
+
+        # for i in range(n):
+        #     result[i] = prefix[i] * suffix[i] 
+
+        # return result
 
         
