@@ -13,7 +13,7 @@ class Solution:
             ""
         """
 
-        result = []
+        stack = []
         matching_parens = {
             "}": "{",
             "]": "[",
@@ -21,23 +21,15 @@ class Solution:
         }
 
         for c in s:
-            if c in matching_parens and result == []:
-                return False
-
-            if not c in matching_parens:
-                result.append(c)
-
             if c in matching_parens:
-                if result[-1] in matching_parens:
-                    result.pop()
-
-                if not result[-1] in matching_parens:
-                    if matching_parens[c] == result[-1]:
-                        result.pop()
-                    else:
-                        return False 
+                if stack and stack[-1] == matching_parens[c]:
+                    stack.pop()
+                else:
+                    return False 
+            else:
+                stack.append(c)
 
 
             
 
-        return True if result == [] else False
+        return True if not stack else False
