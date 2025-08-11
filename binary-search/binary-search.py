@@ -13,7 +13,11 @@ class Solution:
               0 1 2 3 4 5
             [-1,0,3,5,9,12]
               l r
-              m         
+              m  
+
+
+        time: o(log n)
+        space: o(1)       
                  
         """
 
