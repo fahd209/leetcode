@@ -39,8 +39,7 @@ class Solution:
                     l += 1
                 elif sum > 0:
                     r -= 1
-                else:
-                    
+                else:         
                     result.append([nums[i], nums[l], nums[r]])
                     l += 1
                     r -= 1
