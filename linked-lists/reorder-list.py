@@ -12,6 +12,10 @@ class Solution(object):
             s    n
             p
 
+
+            Time: O(n)
+            Space: O(1)
+
         """
 
         # found the middle
@@ -43,10 +47,7 @@ class Solution(object):
 
 
 
-
-
-
-
+        # brute force
         # """
         # 1, 2, 3, 4
         #          k
