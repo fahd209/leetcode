@@ -30,13 +30,7 @@ class Solution:
 
             dummy = Node(None)
             dummy.next = map[orginal.next.val]
-
-            Time: O(n)
-            space: O(n)
         """
-
-        dummyNode = Node(0)
-        tail = dummyNode
         cur1 = head
         cur2 = head
         copies = {None: None}
@@ -47,15 +41,8 @@ class Solution:
 
         while cur2:
             copy = copies[cur2]
-            next = None
-            random = None
-            if cur2.next:
-                next = copies[cur2.next]
-            
-            if cur2.random:
-                random = copies[cur2.random]
-            copy.next = next
-            copy.random = random
+            copy.next = copies[cur2.next]
+            copy.random = copies[cur2.random]
             copy = copy.next
             cur2 = cur2.next
 
