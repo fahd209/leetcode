@@ -37,4 +37,3 @@ class Solution:
             right = self.dfs(node.right, parent)
 
         return left + right + 1 if node.val >= parent.val else left + right
-        
