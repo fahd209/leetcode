@@ -1,35 +1,31 @@
 class Solution:
     def checkInclusion(self, s1: str, s2: str) -> bool:
-        
         """
-            understand:
-                1. two string s1 and s2
-                2. return true or false if s2 has the characters that s1 has as a substring in any order
+            understanding:
+                return true or false if s2 contains substring of s1 in order combination of s1
 
-            question:
-                does it have to be a premutation?
-                what if the order in s2 is the same as s1?
-
-
+            approach:
+                {
+                    a: 1,
+                    b: 1
+                }
+                "eidboooo"
+                     j 
         """
-
 
         count1 = {}
-        n = len(s2)
-         
         for c in s1:
             count1[c] = count1.get(c, 0) + 1
 
         need = len(count1)
 
-        for i in range(n):
+        for i in range(len(s2)):
             count2, cur = {}, 0
-            for j in range(i, n):
-                c = s2[j]
-                count2[c] = count2.get(c, 0) + 1
-                if count1.get(c, 0) < count2[c]:
+            for j in range(i, len(s2)):
+                count2[s2[j]] = count2.get(s2[j], 0) + 1
+                if count1.get(s2[j], 0) < count2.get(s2[j]):
                     break
-                if count1.get(c, 0) == count2[c]:
+                if count1[s2[j]] == count2[s2[j]]:
                     cur += 1
                 if cur == need:
                     return True
