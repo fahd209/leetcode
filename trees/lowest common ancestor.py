@@ -75,3 +75,45 @@ class Solution:
             return root
 
         return LCA
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+
+# review 
+# went over time but solved it with no help
+# space: O(log(n))
+# time:  O(1)
+class Solution:
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        """
+        understanding:
+            given a binary tree and two p and q
+        return the LCA
+        LCA = (lowest common ancestor) meaning the closest root node to p and q
+
+
+        approach:
+        1. iterate throught BST
+        2. if both p and q are less then the cur then we to the left because there is not way the LCA could be in the right
+        3. if both p and q are greater then the cur then we to the right because there no way any nodes in the left can be the LCA
+        4. if we find a node that between p and q then thats the LCA because that means the one node to left is less then the cur and one to the right
+        is greater then cur which make it the LCA because we can't go anymore from there. if we do then one node will not a descendant anymore.
+        """
+
+        if root == None:
+            return None
+
+        cur = root
+
+        while cur:
+            if cur.val > p.val and cur.val > q.val:
+                cur = cur.left
+            elif cur.val < p.val and cur.val < q.val:
+                cur = cur.right
+            else:
+                return cur
