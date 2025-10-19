@@ -60,3 +60,46 @@ class Solution:
 #         for i in range(k):
 #             result = heapq.heappop(heap)
 #         return result
+
+
+
+
+
+
+
+# review
+
+
+# couldn't solve it by my self
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
+        """
+        understanding:
+            given a BST return the kth
+            smallest elements in the tree
+
+        approach:
+            traverse through the tree in order and append 
+            the nodes in a array in order.
+            Once we finish traversing then 
+            we can return the item in the kth index in the 
+            in order array
+        """
+
+        inorder = []
+        def dfs(cur):
+
+            if cur == None:
+                return
+
+            dfs(cur.left)
+            inorder.append(cur.val)
+            dfs(cur.right)
+
+        dfs(root)
